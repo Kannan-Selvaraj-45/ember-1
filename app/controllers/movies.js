@@ -16,9 +16,9 @@ export default class MoviesController extends Controller {
 
   get filteredMovies() {
     if (!this.searched.trim()) {
-      return this.movies;
+      return this.movieStore.movies;
     }
-    return this.movies.filter((movie) =>
+    return this.movieStore.movies.filter((movie) =>
       movie.title.toLowerCase().includes(this.searched.toLowerCase())||movie.director.toLowerCase().includes(this.searched.toLowerCase()),
     );
   }
@@ -58,7 +58,7 @@ export default class MoviesController extends Controller {
 
   @action
   editMovie(id) {
-    let findEditMovie = this.movies.find((movie) => movie.id === id);
+    let findEditMovie = this.movieStore.movies.find((movie) => movie.id === id);
     if (!findEditMovie) return;
 
     let newTitle = prompt('Enter new title:', findEditMovie.title);

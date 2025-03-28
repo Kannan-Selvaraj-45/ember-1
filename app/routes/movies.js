@@ -5,7 +5,6 @@ export default class MoviesRoute extends Route {
   @service movieStore;
   
   model() {
-    // Return the movies from the service
     return this.movieStore.movies;
   }
 }
